@@ -85,10 +85,45 @@ namespace ImageMagickSharp.Tests
 			    wand.CurrentImage.AutoOrientImage();
 				wand.SaveImage(Path.Combine(SaveDirectory, "test.png"));
 			}
-
 		}
 
-		[TestMethod()]
+        [TestMethod()]
+        public void OpenByteArrayTest()
+        {
+            var path = TestImageLogo;
+
+            Assert.IsTrue(File.Exists(path));
+
+            byte[] bytes = File.ReadAllBytes(path);
+
+
+            using (var wand = new MagickWand(bytes))
+            {
+            }
+
+            using (var wand2 = new MagickWand())
+            {
+                Assert.IsTrue(wand2.OpenImage(bytes));
+            }
+        }
+
+        [TestMethod()]
+		public void GetImageAsByteArrayTest()
+		{
+			var path = TestImageLogo;
+
+			Assert.IsTrue(File.Exists(path));
+
+            byte[] bytes = File.ReadAllBytes(path);
+
+            using (var wand = new MagickWand(bytes))
+            {
+                byte[] result = wand.GetImageBlob();
+                File.WriteAllBytes(Path.Combine(SaveDirectory, "TestResize.jpg"), result);
+            }
+        }
+
+        [TestMethod()]
 		public void SaveImageTest()
 		{
 			var path = TestImageLogo;
@@ -103,6 +138,9 @@ namespace ImageMagickSharp.Tests
 				wand.SaveImage(Path.Combine(SaveDirectory, "test.webp"));
 			}
 		}
+
+
+
 
 		[TestMethod()]
 		public void SaveImageWithQualityTest()

@@ -147,7 +147,7 @@ namespace ImageMagickSharp
         /// <param name="length"> The length. </param>
         /// <returns> An IntPtr. </returns>
         [DllImport(Constants.WandLibrary, CallingConvention = Constants.WandCallingConvention)]
-        private static extern IntPtr MagickGetImageBlob(IntPtr wand, out int length);
+        internal static extern IntPtr MagickGetImageBlob(IntPtr wand, out int length);
 
         /// <summary> Magick read image BLOB. </summary>
         /// <param name="wand"> Handle of the wand. </param>
@@ -155,7 +155,7 @@ namespace ImageMagickSharp
         /// <param name="length"> The length. </param>
         /// <returns> An int. </returns>
         [DllImport(Constants.WandLibrary, CallingConvention = Constants.WandCallingConvention)]
-        private static extern int MagickReadImageBlob(IntPtr wand, IntPtr blob, int length);
+        internal static extern int MagickReadImageBlob(IntPtr wand, IntPtr blob, int length);
 
         /// <summary> Magick reset image page. </summary>
         /// <param name="wand"> Handle of the wand. </param>

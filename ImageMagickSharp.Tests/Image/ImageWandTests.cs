@@ -97,7 +97,7 @@ namespace ImageMagickSharp.Tests
 			}
 		}
 
-		[TestMethod()]
+        [TestMethod()]
 		public void ResizeImageTest()
 		{
 			var path = TestImageLogo;
@@ -176,8 +176,8 @@ namespace ImageMagickSharp.Tests
 			}
 		}
 
-		//Todo
-		/*[TestMethod()]
+        //Todo
+        /*[TestMethod()]
 		public void ImageWandLabelImageTests()
 		{
 			using (var wand = new MagickWand(200, 200, "lightblue"))
@@ -194,7 +194,7 @@ namespace ImageMagickSharp.Tests
 			}
 		}*/
 
-		/*[TestMethod()]
+        /*[TestMethod()]
         public void GetImagePixelColorTest()
         {
             var path = TestImageFolder1;
@@ -208,25 +208,25 @@ namespace ImageMagickSharp.Tests
             }
         }*/
 
-/*		//Todo
-		[TestMethod()]
-		public void ColorMatrixTests()
-		{
-			using (var wand = new MagickWand(TestImageFolder1))
-			{
-				double[,] m = 
-				{
-				 {0.5, 0.5, 0.5, 0, 0} ,
-				  {0.5, 1, 0.5, 0, 0 },
-				 { 0.5, 0.5,1, 0, 0 },
-				 { 0.5, 0.5, 0.5, 1, 1 } ,
-				 { 0.5, 0.5, 0.5, 1, 0 }
-				};
-				//wand.CurrentImage.ImageVirtualPixel = VirtualPixelType.Black;
-				bool t = wand.CurrentImage.ColorMatrixImage(m);
-				wand.SaveImage(Path.Combine(SaveDirectory, "ColorMatrix_Out.png"));
-			}
-		}
-        */
-	}
+        /*		//Todo
+                [TestMethod()]
+                public void ColorMatrixTests()
+                {
+                    using (var wand = new MagickWand(TestImageFolder1))
+                    {
+                        double[,] m = 
+                        {
+                         {0.5, 0.5, 0.5, 0, 0} ,
+                          {0.5, 1, 0.5, 0, 0 },
+                         { 0.5, 0.5,1, 0, 0 },
+                         { 0.5, 0.5, 0.5, 1, 1 } ,
+                         { 0.5, 0.5, 0.5, 1, 0 }
+                        };
+                        //wand.CurrentImage.ImageVirtualPixel = VirtualPixelType.Black;
+                        bool t = wand.CurrentImage.ColorMatrixImage(m);
+                        wand.SaveImage(Path.Combine(SaveDirectory, "ColorMatrix_Out.png"));
+                    }
+                }
+                */
+    }
 }
