@@ -56,20 +56,20 @@ namespace ImageMagickSharp
         {
             Environment.SetEnvironmentVariable("MAGICK_THREAD_LIMIT", threadCount.ToString(CultureInfo.InvariantCulture));
         }
-        
-        /// <summary> Sets magick configure path. </summary>
-		/// <param name="path"> Full pathname of the file. </param>
-		internal static void SetMagickConfigurePath(string path)
-		{
-			Environment.SetEnvironmentVariable("MAGICK_CONFIGURE_PATH", path);
-		}
 
-		/// <summary> Sets magick font path. </summary>
-		/// <param name="path"> Full pathname of the file. </param>
-		internal static void SetMagickFontPath(string path)
-		{
-			Environment.SetEnvironmentVariable("MAGICK_FONT_PATH", path);
-		}
+        /// <summary> Sets magick configure path. </summary>
+        /// <param name="path"> Full pathname of the file. </param>
+        internal static void SetMagickConfigurePath(string path)
+        {
+            Environment.SetEnvironmentVariable("MAGICK_CONFIGURE_PATH", path);
+        }
+
+        /// <summary> Sets magick font path. </summary>
+        /// <param name="path"> Full pathname of the file. </param>
+        internal static void SetMagickFontPath(string path)
+        {
+            Environment.SetEnvironmentVariable("MAGICK_FONT_PATH", path);
+        }
 
         /// <summary> Initializes the environment. </summary>
         protected void InitializeEnvironment()
@@ -209,40 +209,40 @@ namespace ImageMagickSharp
         /// <param name="metadata"> The metadata. </param>
         /// <param name="exception"> The exception. </param>
         /// <returns> true if it succeeds, false if it fails. </returns>
-		/*private static bool CommandGenesis(IntPtr image_info, MagickCommandType command, int argc, string[] argv, byte[] metadata, IntPtr exception)
+        /*private static bool CommandGenesis(IntPtr image_info, MagickCommandType command, int argc, string[] argv, byte[] metadata, IntPtr exception)
         {
            return WandInterop.MagickCommandGenesis(image_info, command, argc, argv, metadata, ref exception);
 			//return WandInterop.MagickCommandGenesis(image_info, command, argc, argv);
         }*/
 
-		/// <summary> Queries the formats. </summary>
-		/// <param name="pattern"> Specifies the pattern. </param>
-		/// <returns> An array of string. </returns>
-		internal static List<string> QueryFormats(string pattern)
-		{
-			EnsureInitialized();
-			IntPtr number_formats = IntPtr.Zero;
+        /// <summary> Queries the formats. </summary>
+        /// <param name="pattern"> Specifies the pattern. </param>
+        /// <returns> An array of string. </returns>
+        internal static List<string> QueryFormats(string pattern)
+        {
+            EnsureInitialized();
+            IntPtr number_formats = IntPtr.Zero;
             IntPtr format = WandInterop.MagickQueryFormats("*", ref number_formats);
-			IntPtr[] rowArray = new IntPtr[(int)number_formats];
-			Marshal.Copy(format, rowArray, 0, (int)number_formats);
-			List<string> val = rowArray.Select(x => WandNativeString.Load(x)).ToList();
-			if (pattern == "*")
-				return val;
-			return val.FindAll(x => x.Equals(pattern, StringComparison.InvariantCultureIgnoreCase));
-		}
+            IntPtr[] rowArray = new IntPtr[(int)number_formats];
+            Marshal.Copy(format, rowArray, 0, (int)number_formats);
+            List<string> val = rowArray.Select(x => WandNativeString.Load(x)).ToList();
+            if (pattern == "*")
+                return val;
+            return val.FindAll(x => x.Equals(pattern, StringComparison.InvariantCultureIgnoreCase));
+        }
 
-		/// <summary> Queries format from file. </summary>
-		/// <param name="file"> The file. </param>
-		/// <returns> true if it succeeds, false if it fails. </returns>
-		/*private static bool QueryFormatFromFile(string file)
+        /// <summary> Queries format from file. </summary>
+        /// <param name="file"> The file. </param>
+        /// <returns> true if it succeeds, false if it fails. </returns>
+        /*private static bool QueryFormatFromFile(string file)
 		{
 			return QueryFormats(Path.GetExtension(file).Replace(".", "")).Count > 0;
 		}*/
 
-		/// <summary> Queries the fonts. </summary>
-		/// <param name="pattern"> Specifies the pattern. </param>
-		/// <returns> An array of string. </returns>
-		/*private static List<string> QueryFonts(string pattern)
+        /// <summary> Queries the fonts. </summary>
+        /// <param name="pattern"> Specifies the pattern. </param>
+        /// <returns> An array of string. </returns>
+        /*private static List<string> QueryFonts(string pattern)
 		{
 			EnsureInitialized();
 			using (var stringFormat = new WandNativeString("*"))

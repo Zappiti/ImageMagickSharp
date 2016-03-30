@@ -177,16 +177,17 @@ namespace ImageMagickSharp.Tests
             }
         }
 
-        /*		[TestMethod()]
-                public void PageSizeTest()
-                {
-                    using (var wand = new MagickWand(100, 100, "#ffffff"))
-                    {
-                        wand.PageSize = new WandRectangle(100, 100, 0, 0);
-                        Console.WriteLine(wand.PageSize);
-                    }
-                }
-                */
+        /*		
+        [TestMethod()]
+        public void PageSizeTest()
+        {
+            using (var wand = new MagickWand(100, 100, "#ffffff"))
+            {
+                wand.PageSize = new WandRectangle(100, 100, 0, 0);
+                Console.WriteLine(wand.PageSize);
+            }
+        }
+         */
 
         [TestMethod()]
         public void IteratorSetImageTest()
@@ -212,29 +213,30 @@ namespace ImageMagickSharp.Tests
             }
         }
 
-        /*		[TestMethod()]
-                public void ImageOverlayTest()
+        /*	
+        [TestMethod()]
+        public void ImageOverlayTest()
+        {
+            var path = TestImageLogo;
+
+            Assert.IsTrue(File.Exists(path));
+
+            using (var wand = new MagickWand(path))
+            {
+                //wand.NewImage(100, 100, "#ffffff");
+                wand.OpenImage(TestImageThumb);
+                Debug.WriteLine(wand.GetNumberImages());
+                //wand.IteratorIndex = 0;
+                wand.ResetIterator();
+                using (var w = wand.AppendImages())
                 {
-                    var path = TestImageLogo;
-
-                    Assert.IsTrue(File.Exists(path));
-
-                    using (var wand = new MagickWand(path))
-                    {
-                        //wand.NewImage(100, 100, "#ffffff");
-                        wand.OpenImage(TestImageThumb);
-                        Debug.WriteLine(wand.GetNumberImages());
-                        //wand.IteratorIndex = 0;
-                        wand.ResetIterator();
-                        using (var w = wand.AppendImages())
-                        {
-                            //w.SaveImage(Path.Combine(SaveDirectory, "test.png"));
-                        }
-
-
-                        wand.SaveImage(path);
-                    }
+                    //w.SaveImage(Path.Combine(SaveDirectory, "test.png"));
                 }
+
+
+                wand.SaveImage(path);
+            }
+        }
         */
         [TestMethod()]
         public void ImageWandImageListTest()
@@ -251,7 +253,8 @@ namespace ImageMagickSharp.Tests
             }
         }
 
-        /*[TestMethod()]
+        /*
+        [TestMethod()]
 		public void ConvertImageCommandTest()
 		{
 			using (var wand = new MagickWand(TestImageFolder1))
@@ -280,6 +283,7 @@ namespace ImageMagickSharp.Tests
 			//		bool status = Wand.CommandGenesis(image_info, MagickCommandType.ConvertImageCommand, args_count, args, null, exception);
 			//	}
 			//}
-		}*/
+		}
+        */
     }
 }
