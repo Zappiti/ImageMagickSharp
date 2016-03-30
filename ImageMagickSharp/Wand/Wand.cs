@@ -150,7 +150,7 @@ namespace ImageMagickSharp
 
         /// <summary> Gets the version number string. </summary>
         /// <value> The version number string. </value>
-        private static string VersionNumberString
+        public static string VersionNumberString
         {
             get
             {
